@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Resti Shop</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <h1 class="logo">Resti Shop</h1>
+        <div class="search-cart">
+          <input id="search" type="search" placeholder="Buscar cursos...">
+          <button id="theme-toggle" class="theme-btn">Modo noche</button>
+          <button id="cart-button" class="cart-btn">Carrito (<span id="cart-count">0</span>)</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <h2>Aprende y crece con Resti Shop</h2>
+        <p>Cursos seleccionados, reseñas reales y una experiencia moderna.</p>
+        <div class="hero-actions">
+          <button id="go-courses" class="primary large">Ver Cursos</button>
+        </div>
+      </section>
+
+      <section class="about">
+        <h3>SOBRE NOSOTROS</h3>
+        <p class="about-text">Resti Shop es una pequeña tienda educativa dedicada a ofrecer cursos cuidadosamente seleccionados para ayudarte a mejorar tus habilidades digitales. Valoramos la calidad del contenido y las opiniones reales de los estudiantes. Nuestro objetivo es que aprendas mediante práctica, proyectos y reseñas auténticas.</p>
+      </section>
+
+      <section>
+        <div class="filters">
+          <select id="category-filter">
+            <option value="all">Todas las categorías</option>
+            <option value="html">CURSO HTML</option>
+            <option value="css">CURSO CSS</option>
+            <option value="js">CURSO JS</option>
+          </select>
+        </div>
+
+        <div id="courses" class="grid"></div>
+      </section>
+
+      <section class="site-reviews">
+        <h3>Reseñas recientes</h3>
+        <div class="review-carousel">
+          <button id="review-prev" class="arrow arrow-left" aria-label="Anterior">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M7 14l5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" id="carousel-track"><!-- slides injected by JS --></div>
+          </div>
+          <button id="review-next" class="arrow arrow-right" aria-label="Siguiente">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        <div id="carousel-dots" class="carousel-dots" aria-hidden="false"></div>
+      </section>
+    </main>
+
+    <!-- Modal de detalles y reseñas -->
+    <div id="course-modal" class="modal hidden">
+      <div class="modal-panel">
+        <button id="close-course" class="close">×</button>
+        <div id="course-content">
+          <h3 id="course-title">Título</h3>
+          <div id="course-desc">Descripción breve del curso.</div>
+          <div id="course-rating" class="rating">Valoración: —</div>
+          <hr>
+          <h4>Reseñas</h4>
+          <div id="review-list">No hay reseñas aún.</div>
+
+          <form id="review-form" class="review-form">
+            <h5>Agregar reseña</h5>
+            <input id="review-name" placeholder="Tu nombre" required />
+            <select id="review-rating">
+              <option value="5">5 — Excelente</option>
+              <option value="4">4 — Muy bueno</option>
+              <option value="3">3 — Bueno</option>
+              <option value="2">2 — Regular</option>
+              <option value="1">1 — Malo</option>
+            </select>
+            <textarea id="review-comment" placeholder="Tu comentario" rows="3"></textarea>
+            <button id="submit-review" class="primary" type="submit">Enviar reseña</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carrito -->
+    <div id="cart-modal" class="cart-modal hidden">
+      <div class="cart-panel">
+        <button id="close-cart" class="close">×</button>
+        <h3>Tu carrito</h3>
+        <div id="cart-items"></div>
+        <div class="cart-footer">
+          <div>Total: <span id="cart-total">$0.00</span></div>
+          <button id="checkout" class="primary">Pagar (simulado)</button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">© 2026 Resti Shop — Demo</div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

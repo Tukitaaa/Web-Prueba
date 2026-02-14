@@ -1,0 +1,186 @@
+/* Original styles.css content restored */
+:root{
+	/* Tema claro por defecto */
+	--bg: #f7f9fc;
+	--card: #ffffff;
+	--muted: #6b7280;
+	--accent: #7c5cff;
+	--title-color: #07243a;
+	--text-color: #0b1b2b;
+	--glass: rgba(2,6,23,0.04);
+}
+
+/* Tema oscuro al añadir la clase .dark en body */
+body.dark{
+	--bg:#071827;
+	--card:#071225;
+	--muted:#9aa4b2;
+	--accent:#7c5cff;
+	--glass: rgba(255,255,255,0.04);
+	--title-color: #eaf3ff;
+	--text-color: #e6eef8;
+}
+*{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Helvetica,Arial}
+.html, body {height:100%}
+body{margin:0;color:var(--text-color);background:var(--bg);-webkit-font-smoothing:antialiased}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.site-header{backdrop-filter:blur(6px);background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03);position:sticky;top:0;z-index:20}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.logo{margin:0;padding:14px 0;font-size:20px;color:var(--accent);letter-spacing:0.6px}
+.search-cart{display:flex;gap:10px;align-items:center}
+#search{padding:10px 12px;border:1px solid rgba(255,255,255,0.06);border-radius:999px;background:transparent;color:var(--muted);min-width:220px}
+.cart-btn{background:linear-gradient(90deg,var(--accent),#4f8bff);color:#fff;border:none;padding:10px 14px;border-radius:12px;cursor:pointer;box-shadow:0 6px 18px rgba(92,80,255,0.14)}
+.hero{padding:48px 20px;margin:8px 0;border-radius:12px;background:linear-gradient(90deg, rgba(124,92,255,0.06), rgba(79,139,255,0.04));box-shadow:0 8px 20px rgba(15,23,42,0.06)}
+
+/* Hero claro: fondo violeta suave en modo claro */
+body:not(.dark) .hero{
+	background: linear-gradient(90deg, rgba(241,236,255,1), rgba(249,247,255,1));
+	border: 1px solid rgba(124,92,255,0.12);
+	box-shadow: 0 14px 36px rgba(124,92,255,0.06), 0 6px 20px rgba(2,6,23,0.03);
+}
+.hero h2{margin:0 0 8px;font-size:28px;color:var(--title-color)}
+.hero p{color:var(--muted);margin:0}
+.filters{display:flex;justify-content:flex-end;margin-top:16px}
+#category-filter{padding:8px 10px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;color:var(--text-color)}
+.about{background:var(--card);padding:24px;border-radius:12px;margin:20px 0 36px;border:1px solid rgba(15,23,42,0.06);box-shadow:0 12px 30px rgba(2,6,23,0.04);border-left:6px solid var(--accent)}
+.about h3{margin:0 0 12px;color:var(--title-color);letter-spacing:0.6px}
+.about-text{color:var(--text-color);margin:0;line-height:1.6}
+
+/* separar más el about del listado */
+.about{margin-bottom:36px}
+
+.grid{display:grid;grid-template-columns:1fr;gap:24px;margin-top:26px}
+.card{background:var(--card);border-radius:12px;padding:0;border:1px solid rgba(15,23,42,0.06);display:flex;flex-direction:column;gap:12px;align-items:stretch;transform:translateY(20px);opacity:0;transition:all 420ms cubic-bezier(.2,.9,.2,1)}
+.card.in-view{transform:none;opacity:1}
+
+/* Hover: aumentar y elevar ligeramente la tarjeta sin romper el layout */
+.card{will-change:transform,box-shadow}
+.card.in-view{transform:translateY(0)}
+.card.in-view:hover{
+	transform:translateY(-8px) scale(1.02);
+	box-shadow:0 20px 50px rgba(2,6,23,0.08), 0 0 36px rgba(124,92,255,0.14);
+	z-index:3;
+}
+
+/* Borde violeta neón solo en modo claro */
+body:not(.dark) .card{
+	border:2px solid rgba(124,92,255,0.95) !important;
+	box-shadow:0 14px 40px rgba(2,6,23,0.06), 0 0 30px rgba(124,92,255,0.18);
+}
+.thumb{width:100%;height:160px;border-radius:12px 12px 0 0;background-size:cover;background-position:center;flex-shrink:0}
+.content{flex:1;padding:14px}
+.title{font-weight:700;margin:0 0 6px;color:var(--title-color);font-size:18px}
+.meta{font-size:13px;color:var(--muted);margin-bottom:8px}
+.price{font-weight:800;color:var(--accent)}
+.actions{display:flex;gap:12px;margin-top:12px;justify-content:flex-end}
+.add-btn{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:8px 12px;border-radius:10px;color:var(--muted);cursor:pointer}
+.details-btn{background:var(--accent);border:none;padding:8px 12px;border-radius:10px;color:#fff;cursor:pointer}
+.site-footer{padding:28px;text-align:center;color:var(--muted);margin-top:28px}
+
+.modal{position:fixed;inset:0;background:linear-gradient(rgba(2,6,23,0.35), rgba(2,6,23,0.35));display:flex;align-items:center;justify-content:center;z-index:40}
+.modal-panel{background:var(--card);width:720px;max-width:92%;padding:20px;border-radius:12px;border:1px solid rgba(15,23,42,0.06);box-shadow:0 20px 60px rgba(15,23,42,0.06)}
+.hidden{display:none !important}
+.close{background:transparent;border:0;font-size:28px;cursor:pointer;float:right;color:var(--muted)}
+#course-title{margin-top:0;color:#fff}
+#course-desc{color:var(--muted);margin-bottom:8px}
+#course-rating{color:#ffd166;margin-bottom:8px}
+#review-list{max-height:220px;overflow:auto;padding:6px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);background:var(--glass)}
+.review{padding:8px;border-bottom:1px solid rgba(255,255,255,0.02)}
+.review .who{font-weight:700;color:#fff}
+.review .text{color:var(--muted);margin-top:6px}
+.review-form{display:flex;flex-direction:column;gap:8px;margin-top:12px}
+.review-form input,.review-form textarea,.review-form select{padding:8px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:transparent;color:var(--text-color)}
+.review-form .primary{align-self:flex-start}
+
+/* Asegurar que los selects y sus opciones sean legibles siempre */
+select, .review-form select, #category-filter {
+	color: var(--text-color) !important;
+	background: var(--card) !important;
+	border-color: rgba(15,23,42,0.06) !important;
+}
+select option {
+	color: var(--text-color) !important;
+	background: var(--card) !important;
+}
+/* Evitar que el icono nativo en Windows/Edge aplique filtros extraños */
+select::-ms-expand { filter: none; }
+
+/* Forzar contraste legible para reseñas en ambos temas */
+.review-card .who, .review-card .text, .review .who, .review .text, .review-global .who, .review-global .text {
+	color: var(--text-color) !important;
+}
+
+.review-list-global{display:flex;flex-direction:column;gap:8px;padding:8px;border-radius:8px;border:1px solid rgba(15,23,42,0.06);background:var(--card)}
+.review-global{padding:10px;border-bottom:1px solid rgba(15,23,42,0.04)}
+.review-global .who{font-weight:700;color:var(--title-color)}
+.review-global .text{color:var(--text-color);margin-top:6px}
+
+/* Mejor diseño para el botón de tema */
+.theme-btn{background:linear-gradient(90deg,var(--accent),#4f8bff);border:0;padding:0;width:40px;height:40px;border-radius:999px;color:#fff;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:16px;box-shadow:0 8px 20px rgba(124,92,255,0.12)}
+.theme-btn:hover{transform:translateY(-2px)}
+.theme-icon{pointer-events:none}
+
+/* Carrusel de reseñas */
+.site-reviews{margin-top:28px}
+.review-carousel{display:flex;align-items:center;gap:12px}
+/* Estilos modernos para flechas del carrusel */
+.arrow{width:40px;height:40px;border-radius:999px;border:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 auto;background:linear-gradient(135deg,var(--accent),#4f8bff);color:#fff;box-shadow:0 8px 18px rgba(79,139,255,0.12);transition:transform .18s,box-shadow .18s,opacity .12s}
+.arrow svg{display:block}
+.arrow:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(79,139,255,0.18)}
+.arrow:active{transform:translateY(-1px) scale(.98)}
+.arrow[disabled]{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.arrow-left{transform:rotate(0deg);display:none !important}
+.arrow-right{transform:rotate(0deg)}
+/* Fondo claro y borroso (panel luminoso) */
+.carousel-viewport{overflow:hidden;flex:1;border-radius:12px;border:1px solid rgba(255,255,255,0.14);background:linear-gradient(180deg, rgba(255,255,255,0.18), rgba(255,255,255,0.10));backdrop-filter:blur(18px) saturate(140%) brightness(1.04);-webkit-backdrop-filter:blur(18px) saturate(140%) brightness(1.04);box-shadow:0 12px 40px rgba(2,6,23,0.06);height:120px;position:relative}
+.carousel-track{display:flex;flex-direction:column;transition:transform .45s cubic-bezier(.22,.9,.32,1)}
+.review-slide{height:120px;padding:12px;box-sizing:border-box;width:100%}
+.review-card{height:100%;display:flex;flex-direction:column;justify-content:center}
+.review-card{background:rgba(255,255,255,0.12);padding:12px;border-radius:8px;box-shadow:inset 0 1px 0 rgba(255,255,255,0.12), 0 8px 26px rgba(2,6,23,0.06), 0 0 18px rgba(124,92,255,0.12);border:1px solid rgba(124,92,255,0.95);}
+
+/* Forzar texto oscuro dentro del panel luminoso para buena lectura */
+.review-card .who{color:#07243a}
+.review-card .text{color:#0b1b2b}
+
+/* Dark theme adjustments for glass effect */
+/* Mantener el panel luminoso incluso en modo oscuro (se verá como un vidrio claro sobre fondo oscuro) */
+.body.dark .carousel-viewport{border:1px solid rgba(255,255,255,0.12);background:linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+.body.dark .review-card{background:rgba(255,255,255,0.10);box-shadow:inset 0 1px 0 rgba(255,255,255,0.06), 0 8px 26px rgba(0,0,0,0.45), 0 0 18px rgba(124,92,255,0.06);border:1px solid rgba(124,92,255,0.5)}
+
+/* Optional: si quieres usar una imagen difuminada de fondo dentro del viewport,
+	 descomenta y ajusta la URL. La imagen se mostrará detrás del cristal y
+	 quedará muy difuminada por el backdrop-filter.
+.carousel-viewport::before{
+	content:'';position:absolute;inset:0;border-radius:12px;background-image:url('path/to/beach.jpg');background-size:cover;background-position:center;filter:blur(6px) brightness(0.9);z-index:0;opacity:0.9}
+.carousel-track, .review-slide, .review-card{position:relative;z-index:1}
+*/
+.review-card .who{font-weight:700;color:var(--title-color)}
+.review-card .text{color:var(--text-color);margin-top:6px}
+@media(min-width:720px){
+	.carousel-viewport{min-height:120px}
+}
+
+.cart-modal{position:fixed;inset:0;background:rgba(2,6,23,0.35);display:flex;align-items:center;justify-content:center}
+.cart-panel{background:var(--card);width:360px;padding:16px;border-radius:12px;max-height:80vh;overflow:auto;border:1px solid rgba(15,23,42,0.06)}
+.cart-item{display:flex;gap:8px;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.02)}
+.cart-item img{width:64px;height:48px;object-fit:cover;border-radius:6px}
+.cart-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.primary{background:linear-gradient(90deg,var(--accent),#4f8bff);color:#fff;border:0;padding:10px 14px;border-radius:10px;cursor:pointer}
+
+/* Utilities */
+html{scroll-behavior:smooth}
+.theme-btn{background:var(--glass);border:0;padding:0;width:40px;height:40px;border-radius:999px;color:var(--muted);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;font-size:18px;transition:transform .18s,background .18s}
+.theme-btn:active{transform:scale(.96)}
+.hero-actions{margin-top:18px}
+.large{padding:14px 20px;font-size:16px}
+
+@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:1000px){.grid{grid-template-columns:1fr 1fr 1fr}}
+
+/* Evitar desbordamiento horizontal: limitar medios y elementos anchos */
+img, video, iframe {max-width:100%;height:auto;display:block}
+
+/* Asegurar que el contenedor no provoque overflow en pantallas pequeñas */
+.container{width:100%;box-sizing:border-box}
+
+
